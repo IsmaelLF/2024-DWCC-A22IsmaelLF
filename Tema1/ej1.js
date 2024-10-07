@@ -1,13 +1,37 @@
+"use strict";
+
 // <!--
 // 1. Crea unha variable que almacene un día da semana de luns a domingo. En función
 // do valor da variable mostra unha mensaxe indicando se o día é laborable ou non.
+let dia = "sabado";
 
-let day = "sabado";
+switch (dia) {
+  case "lunes":
+    console.log("Lunes é laborable");
+    break;
+  case "martes":
+    console.log("Martes é laborable");
+    break;
+  case "miercoles":
+    console.log("Miercoles é laborable");
+    break;
+  case "jueves":
+    console.log("Jueves é laborable");
+    break;
+  case "viernes":
+    console.log("Viernes é laborable");
+    break;
 
-if (day === "sabado" || day === "domingo") {
-  console.log("Es fin de semana");
-} else {
-  console.log("Es laborable");
+  case "sabado":
+    console.log("Sabado non é laborable");
+    break;
+  case "domingo":
+    console.log("Domingo non é laborable");
+    break;
+
+  default:
+    console.log("Dia non seleccionado");
+    break;
 }
 
 // 2. Crea 3 variables e inicialízaas con 3 números diferentes. Mostra por pantalla o maior
