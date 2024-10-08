@@ -106,3 +106,10 @@ else if (imc2 > imc1) {
     `O IMC (${imc2}) da segunda persoa e maior que o da primeira persoa (${imc1})`
   );
 } else console.log("Os IMC son iguais");
+
+// 1. Crea unha función que reciba como parámetro un prezo e unha porcentaxe de
+// // desconto. A función debe calcular o prezo final aplicado o desconto e devolver este
+// valor.
+
+const func = (a, b) => a - (a * b) / 100;
+console.log(func(100, 22));
