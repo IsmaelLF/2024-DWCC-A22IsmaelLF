@@ -1,3 +1,5 @@
+"use strict";
+
 // 1. Mostra o día da semana (en letra) do 25 de xullo do ano actual.
 
 let xul25 = new Date("25, Julio, 2024");
@@ -65,4 +67,20 @@ console.log(finDeSemana("8, Octubre, 2024"));
 // 4. Crea unha función que reciba unha data como parámetro e devolva o número de
 // días que pasaron dende que comezou o ano.
 
-const diasTranscurridos = (fecha) => {};
+const diasTranscurridos = (fecha) => {
+  let jan1 = new Date("2024-1-1");
+
+  let date = new Date(fecha);
+
+  let resta = date - jan1;
+  let diasQuePasaron = Math.round(resta / 1000 / 60 / 60 / 24);
+  console.log(
+    `Dende o ${jan1.getDay()} de ${jan1.toLocaleString("default", {
+      month: "long",
+    })} ata o ${date.getDay()} de ${date.toLocaleString("default", {
+      month: "long",
+    })} pasaron ${diasQuePasaron} dias`
+  );
+};
+
+diasTranscurridos("2024-10-10");
