@@ -4,8 +4,8 @@
 
 let xul25 = new Date("25, Julio, 2024");
 
-let b = xul25.getDay();
-switch (b) {
+let value2 = xul25.getDay();
+switch (value2) {
   case 0:
     console.log("Domingo");
 
