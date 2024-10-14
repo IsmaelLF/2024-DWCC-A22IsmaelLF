@@ -75,11 +75,12 @@ let arrayEntrada = ["first_name", "last_NAME"];
 for (const value of arrayEntrada) {
   let values = value.split("_");
   let [firstWord, secondWord] = values;
-  console.log(secondWord);
 
-  secondWord = secondWord
-    .toLowerCase()
-    .replace(secondWord.charAt(0), secondWord.charAt(0).toUpperCase());
+  secondWord = secondWord.toLowerCase();
+  secondWord = secondWord.replace(
+    secondWord.charAt(0),
+    secondWord.charAt(0).toUpperCase()
+  );
   let fullWords = firstWord + secondWord;
   console.log(fullWords);
 }
