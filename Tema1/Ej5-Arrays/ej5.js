@@ -35,17 +35,17 @@ const froitas = ["peras", "mazás", "kiwis", "plátanos", "mandarinas"];
 
 froitas.splice(1, 1);
 
-console.log(froitas.join(", ").toString());
+console.log(froitas.join(", "));
 
 // b
 
-froitas.splice(3, 0, "laranxas", "sandia");
+froitas.splice(froitas.indexOf("plátanos") + 1, 0, "laranxas", "sandia");
 
-console.log(froitas.join(", ").toString());
+console.log(froitas.join(", "));
 
-froitas.splice(2, 1, "cereixas", "nésperas");
+froitas.splice(1, 1, "cereixas", "nésperas");
 
-console.log(froitas.join(", ").toString());
+console.log(froitas.join(", "));
 
 // 3. Crea unha función á que se lle pase unha frase con varias palabras e devolva a
 // mesma frase coa primeira letra de cada palabra en maiúsculas e o resto de letras en
@@ -62,4 +62,4 @@ const firstCap = (frase) => {
   }
   console.log(arr.toString().replaceAll(",", " "));
 };
-firstCap("hola que tal ");
+firstCap("hola qUe tal ");

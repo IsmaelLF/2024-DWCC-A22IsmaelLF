@@ -36,7 +36,7 @@ const players = [
 // de cada equipo. Así, players1 terá os xogadores do primeiro equipo e
 // players2 os do segundo equipo.
 
-let [players1, players2] = players.slice(0, 10);
+let [players1, players2] = players;
 
 console.log(players1);
 console.log(players2);
@@ -54,7 +54,7 @@ console.log(fieldPlayers);
 
 let [gk2, ...fieldPlayers2] = players2;
 
-let allPlayers = [...fieldPlayers, ...fieldPlayers2];
+let allPlayers = [...players1, ...players2];
 
 console.log(allPlayers);
 
@@ -73,9 +73,7 @@ console.log(players1Final);
 let arrayEntrada = ["first_name", "last_NAME"];
 
 for (const value of arrayEntrada) {
-  let values = value.split("_");
-  let [firstWord, secondWord] = values;
-
+  let [firstWord, secondWord] = value.split("_");
   secondWord = secondWord.toLowerCase();
   secondWord = secondWord.replace(
     secondWord.charAt(0),
@@ -94,16 +92,16 @@ const flightsInfo =
 let individualFlight = flightsInfo.split("+");
 
 for (const info of individualFlight) {
-  let infoToArray = info.split(";");
-  let [status, departure, destination, arrival] = infoToArray;
+  let [status, departure, destination, arrival] = info.split(";");
   status = status.replaceAll("_", " ");
-  departure = departure.replaceAll(/[0-9]/g, "").toUpperCase();
-  destination = destination.replaceAll(/[0-9]/g, "").toUpperCase();
+  // departure = departure.replaceAll(/[0-9]/g, "").toUpperCase();          Alternative
+  departure = departure.slice(0, 3).toUpperCase();
+  destination = destination.slice(0, 3).toUpperCase();
   arrival = arrival
     .replaceAll(":", "h")
     .padStart(arrival.length + 1, "(")
     .padEnd(arrival.length + 2, ")");
 
   let finalFlightInfo = [status, departure, destination, arrival].toString();
-  console.log(finalFlightInfo.replaceAll(",", " ").padStart(length + 100, " "));
+  console.log(finalFlightInfo.replaceAll(",", " ").padStart(length + 100));
 }
