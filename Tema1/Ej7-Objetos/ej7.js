@@ -41,8 +41,8 @@ const game2 = {
 };
 // a. Recorre o array game.scored e mostra por pantalla información do xogador
 // que marcou e o número de gol marcado. Exemplo: “Gol 1: Lewandowski”.
-for (const player of game2.scored.entries()) {
-  console.log(`Gol ${player[0] + 1} ${player[1]}`);
+for (const [index, player] of game2.scored.entries()) {
+  console.log(`Gol ${index + 1} ${player}`);
 }
 
 // b. Crea un novo obxecto chamado scorers que conteña como propiedades o
