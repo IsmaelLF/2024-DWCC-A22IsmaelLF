@@ -42,9 +42,9 @@ const game2 = {
 // a. Recorre o array game.scored e mostra por pantalla información do xogador
 // que marcou e o número de gol marcado. Exemplo: “Gol 1: Lewandowski”.
 let gol = 0;
-for (const goal of game2.scored) {
+for (const player of game2.scored) {
   gol++;
-  console.log(`Gol ${gol}: ${goal}`);
+  console.log(`Gol ${gol}: ${player}`);
 }
 
 // b. Crea un novo obxecto chamado scorers que conteña como propiedades o
@@ -52,5 +52,10 @@ for (const goal of game2.scored) {
 // marcaron respectivamente. Neste exemplo sería algo así: {Lewandowski: 2,
 // Gnarby: 1, Hummels: 1}
 
-const scorers = { Lewandowski: 2, Gnabry: 1, Hummels: 1 };
+// const scorers = { Lewandowski: 2, Gnabry: 1, Hummels: 1 };
+const scorers = {};
+
+for (const player of game2.scored) {
+  scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+}
 console.log(scorers);
