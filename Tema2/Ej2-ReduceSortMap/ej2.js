@@ -47,22 +47,20 @@ const diasSemana = [
 ];
 // a. Obtén un novo array cos días que empecen por “m” e móstrao por consola.
 
-let diasPorM = diasSemana.filter((dia) => dia.charAt(0) == "m");
+let diasPorM = diasSemana.filter((dia) => dia.startsWith("m"));
 console.log(diasPorM);
 
 // b. Mostra unha mensaxe indicando se algún día comeza por ‘s’.
-let booleanoEmpezaPorS = diasSemana.some((dia) => dia.charAt(0) == "s");
+let booleanoEmpezaPorS = diasSemana.some((dia) => dia.startsWith("s"));
 
 console.log(booleanoEmpezaPorS);
 
 // c. Mostra unha mensaxe indicando se todos os días acaban en ‘s’.
-let todosAcabanEnS = diasSemana.every(
-  (dia) => dia.charAt(dia.length - 1) == "s"
-);
+let todosAcabanEnS = diasSemana.every((dia) => dia.endsWith("s"));
 console.log(todosAcabanEnS);
 
 // d. Mostra por consola o primeiro día que empece por “m”.
-let primeiroEmpezandoPorM = diasSemana.find((dia) => dia.charAt(0) == "m");
+let primeiroEmpezandoPorM = diasSemana.find((dia) => dia.startsWith("m"));
 console.log(primeiroEmpezandoPorM);
 
 // e. Mostra por consola a posición no array do primeiro día que empeza por “m”.
@@ -110,32 +108,93 @@ const inventors = [
 ];
 // a. Filtra o array de inventores e crea un array só cos inventores que naceron no
 // século XVI.
+// 1501-1600
+
+let inventoresSXVI = inventors.filter(
+  ({ year }) => year > 1501 && year <= 1600
+);
+console.log(inventoresSXVI);
+
 // b. Crea un array co nome completo dos inventores: ["Albert Einstein", "Isaac
 // Newton", ...]
+
+let nomeCompletoInventores = inventors.map(
+  (inventor) => `${inventor.first} ${inventor.last}`
+);
+console.log(nomeCompletoInventores);
+
 // c. Unha vez obtido o array co nome completo dos inventores do exercicio
 // anterior, ordénao alfabeticamente polo apelido.
+
+let nomeCompletoInventoresOrdenadoApellidos = nomeCompletoInventores.sort(
+  (a, b) => {
+    const apellido1 = a.split(" ").pop();
+    const apellido2 = b.split(" ").pop();
+    return apellido1.localeCompare(apellido2);
+  }
+);
+console.log(nomeCompletoInventoresOrdenadoApellidos);
+
 // d. Ordena alfabeticamente polo apelido o array de obxectos inventores inicial.
+
+let inventoresOrdenadoApellidos = inventors.sort((a, b) => {
+  const apelido1 = a.last;
+  const apelido2 = b.last;
+  return apelido1.localeCompare(apelido2);
+});
+
+console.log(inventoresOrdenadoApellidos);
+
 // e. Ordena o array de inventores pola data de nacemento.
+let inventoresOrdenadosDataNacemento = inventors.sort((a, b) => {
+  return a.year - b.year;
+});
+
+console.log(inventoresOrdenadosDataNacemento);
+
 // f. Calcula a suma dos anos que viviron todos os inventores.
+let sumaDosAnosQueViviron = inventors
+  .map((inventor) => inventor.passed - inventor.year)
+  .reduce((acc, currVal) => (acc += currVal));
+
+console.log(sumaDosAnosQueViviron);
+
 // g. Ordena os inventores polos anos que viviron, primeiro o máis lonxevo
+
+let ordenarPorLonxevidade = inventors.sort(
+  (a, b) => b.passed - b.year - (a.passed - a.year)
+);
+
+console.log(ordenarPorLonxevidade);
+
 // 6. Dada a seguinte información, obtén un obxecto con unha propiedade para cada
 // medio de transporte, indicando o número de veces que se repite no array. É dicir, o
 // resultado debería ser {car: 5, truck: 3, bike: 2, walk: 2, van: 2, pogostick: 1}. Intentar
 // facer o exercicio usando o método reduce
-// const data = [
-// "car",
-// "car",
-// "truck",
-// "truck",
-// "bike",
-// "walk",
-// "car",
-// "van",
-// "bike",
-// "walk",
-// "car",
-// "van",
-// "car",
-// "truck",
-// "pogostick",
-// ];
+const data = [
+  "car",
+  "car",
+  "truck",
+  "truck",
+  "bike",
+  "walk",
+  "car",
+  "van",
+  "bike",
+  "walk",
+  "car",
+  "van",
+  "car",
+  "truck",
+  "pogostick",
+];
+
+let numeroRepeticions = data.reduce((acc, currVal) => {
+  if (acc[currVal]) {
+    acc[currVal] += 1;
+  } else acc[currVal] = 1;
+
+  return acc;
+}, {});
+
+console.log(numeroRepeticions);
