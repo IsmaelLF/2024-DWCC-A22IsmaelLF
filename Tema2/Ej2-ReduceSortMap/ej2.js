@@ -189,12 +189,12 @@ const data = [
   "pogostick",
 ];
 
-let numeroRepeticions = data.reduce((acc, currVal) => {
-  if (acc[currVal]) {
-    acc[currVal] += 1;
-  } else acc[currVal] = 1;
+let numeroRepeticions = data.reduce((accumulator, currentValue) => {
+  if (accumulator[currentValue]) {
+    accumulator[currentValue] += 1;
+  } else accumulator[currentValue] = 1;
 
-  return acc;
+  return accumulator;
 }, {});
 
 console.log(numeroRepeticions);
