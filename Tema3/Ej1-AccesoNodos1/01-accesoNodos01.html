@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style type="text/css" id="operaUserStyle"></style>
+    <title>Document</title>
+    <script src="ej1.js" defer></script>
+  </head>
+  <body>
+    <form name="search">
+      <label
+        >Buscar na páxina:
+        <input type="text" name="search" />
+      </label>
+      <input type="submit" value="Search!" />
+    </form>
+
+    <hr />
+
+    <form name="search-person">
+      Buscar os visitantes:
+      <table id="age-table">
+        <tbody>
+          <tr>
+            <td>Idade:</td>
+            <td id="age-list">
+              <label>
+                <input type="radio" name="age" value="young" />menor de
+                18</label
+              >
+              <label>
+                <input type="radio" name="age" value="mature" />18-50</label
+              >
+              <label>
+                <input type="radio" name="age" value="senior" />maior de
+                50</label
+              >
+            </td>
+          </tr>
+
+          <tr>
+            <td>Máis:</td>
+            <td>
+              <input type="text" name="info[0]" />
+              <input type="text" name="info[1]" />
+              <input type="text" name="info[2]" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <input type="submit" value="Search!" />
+    </form>
+  </body>
+</html>
