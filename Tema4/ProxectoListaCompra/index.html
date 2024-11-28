@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compra</title>
+    <style>
+      * {
+        text-align: center;
+        margin: 2vh;
+        border-radius: 5px;
+        padding: 10px;
+        font-weight: bolder;
+      }
+      li {
+        background-color: white;
+        width: fit-content;
+        text-align: center;
+        height: 2em;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        align-items: center;
+        margin: 5px;
+        border: 1px solid grey;
+      }
+      button {
+        background-color: white;
+        border: none;
+        display: inline-flex;
+        align-items: center;
+        text-align: center;
+        font-size: larger;
+        height: 100%;
+      }
+      li:hover {
+        scale: 120%;
+      }
+      .updateBtn {
+        background-color: lawngreen;
+      }
+      #contedor {
+        margin: auto;
+        width: fit-content;
+        text-align: center;
+        background-color: white;
+        border: 1px solid gray;
+      }
+      body,
+      #filtro {
+        background-color: lightgray;
+      }
+      #filtro,
+      #filtro:focus {
+        border: 0px;
+      }
+      #caixa,
+      #borrar {
+        border: 0px;
+        font-size: medium;
+      }
+      #engadir {
+        background-color: black;
+        color: white;
+        padding: 10px;
+        font-size: medium;
+      }
+      marquee {
+        margin-top: 10vh;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+        font-size: 70px;
+        color: deeppink;
+        width: 100%;
+      }
+      .oculto {
+        display: none;
+      }
+      .btnModificar {
+        background-color: darkred;
+        justify-content: center;
+        color: white;
+        text-align: center;
+      }
+
+      .botonX {
+        color: crimson;
+        display: inline-flex;
+        align-self: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <marquee behavior="scroll" direction="right" scrollamount="10"
+      >Lista compra</marquee
+    >
+    <div id="contedor">
+      <input
+        type="text"
+        name="caixa"
+        id="caixa"
+        placeholder="Introduce un elemento"
+      />
+      <br /><br />
+      <button type="button" id="engadir">+ Engadir elemento</button>
+      <br /><br />
+      <input
+        type="text"
+        name="filtro"
+        id="filtro"
+        placeholder="Filtrar elementos"
+      />
+      <br /><br />
+    </div>
+    <button class="oculto" type="reset" id="borrar">- Borrar todo</button>
+    <script src="compra.js" defer></script>
+  </body>
+</html>
