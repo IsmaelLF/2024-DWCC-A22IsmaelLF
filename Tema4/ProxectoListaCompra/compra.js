@@ -16,6 +16,7 @@ botonEngadir.addEventListener("click", () => {
   boton.textContent = "x";
   if (input.value !== "") {
     li.textContent = input.value;
+
     contedor.appendChild(ul);
     ul.appendChild(li);
 
