@@ -11,7 +11,7 @@ let click = document.getElementById("textoClick");
 let opcions = Array.from(document.getElementsByClassName("oculto"));
 
 click.addEventListener("mouseover", () => {
-  document.body.style.cursor = "pointer";
+  click.style.cursor = "pointer";
 });
 click.addEventListener("click", () => {
   for (const opcion of opcions) {
