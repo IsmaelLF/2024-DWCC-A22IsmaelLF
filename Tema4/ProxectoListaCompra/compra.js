@@ -1,3 +1,4 @@
+"use strict";
 let input = document.getElementById("caixa");
 let contedor = document.getElementById("contedor");
 let botonEngadir = document.getElementById("engadir");
@@ -14,12 +15,24 @@ botonEngadir.addEventListener("click", () => {
   boton.className = "botonX";
 
   boton.textContent = "x";
+
   if (input.value !== "") {
     li.textContent = input.value;
 
+    let duplicado = false;
+    Array.from(lis).forEach((element) => {
+      if (element.firstChild.textContent === li.textContent) {
+        duplicado = true;
+      }
+    });
+
+    if (duplicado) {
+      alert("Xa existe este elemento");
+      return;
+    }
+
     contedor.appendChild(ul);
     ul.appendChild(li);
-
     li.appendChild(boton);
     input.value = "";
 
@@ -27,6 +40,7 @@ botonEngadir.addEventListener("click", () => {
       botonBorrarTodo.classList.remove("oculto");
     }
   }
+
   // Listener para borrar elemento da lista
   boton.addEventListener("click", () => {
     if (confirm("Queres eliminar este elemento?")) {
@@ -46,6 +60,7 @@ botonBorrarTodo.addEventListener("click", () => {
     Array.from(lis).forEach((element) => {
       element.remove();
       filtro.value = "";
+      localStorage.clear();
     });
     botonBorrarTodo.classList.add("oculto");
   }
@@ -56,12 +71,12 @@ botonBorrarTodo.addEventListener("click", () => {
 filtro.addEventListener("input", () => {
   let filtroMinuscula = filtro.value.toLowerCase();
   Array.from(lis).forEach((element) => {
-    let li = element.textContent.slice(0, -1).toLowerCase();
+    let li = element.firstChild.textContent;
 
     if (li.includes(filtroMinuscula)) {
       element.style.display = "inline-flex";
     } else {
-      element.style.display = " none";
+      element.style.display = "none";
     }
   });
 });
