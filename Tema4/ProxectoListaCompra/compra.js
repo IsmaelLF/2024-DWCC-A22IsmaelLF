@@ -68,7 +68,7 @@ botonEngadir.addEventListener("click", () => {
       let botonConfirmar = document.createElement("button");
       botonConfirmar.textContent = "✅";
       li.appendChild(botonConfirmar);
-      // TODO: Tense que actualizar no localStorage tamén.  Evitar que o listener do li se repita multiples veces e que o "novo" li teña listener.
+      // TODO: Tense que actualizar no localStorage tamén.  Evitar que o listener do li se repita multiples veces e que o "novo" li teña listener. Non esta funcionando o removeEventListener, mirar eso.
       botonConfirmar.addEventListener("click", () => {
         let liModificado = inputModificar.closest("li");
         if (inputModificar.value !== "") {
