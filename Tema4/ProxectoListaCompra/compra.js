@@ -52,7 +52,8 @@ botonEngadir.addEventListener("click", () => {
     let botonModificar = document.createElement("button");
     botonModificar.setAttribute("type", "button");
     botonModificar.textContent = "✏️";
-    botonModificar.style.color = "green";
+    botonModificar.className = "oculto";
+    botonModificar.classList.remove("oculto");
     boton.insertAdjacentElement("beforebegin", botonModificar);
 
     botonModificar.addEventListener("click", () => {
@@ -64,25 +65,21 @@ botonEngadir.addEventListener("click", () => {
       inputModificar.value = li.firstChild.textContent;
       li.textContent = "";
       li.appendChild(inputModificar);
-
       let botonConfirmar = document.createElement("button");
       botonConfirmar.textContent = "✅";
       li.appendChild(botonConfirmar);
-
-      // TODO: Poder volver a ter boton de modificar. Tense que actualizar no localStorage tamén. Posibilidad de facelo no mismo li sin crear outro(?)
+      // TODO: Tense que actualizar no localStorage tamén.  Evitar que o listener do li se repita multiples veces e que o "novo" li teña listener.
       botonConfirmar.addEventListener("click", () => {
+        let liModificado = inputModificar.closest("li");
         if (inputModificar.value !== "") {
-          li.remove();
-          let novoLi = document.createElement("li");
-          novoLi.textContent = inputModificar.value;
-          ul.appendChild(novoLi);
-          novoLi.appendChild(botonModificar);
-          novoLi.appendChild(boton);
+          liModificado.textContent = inputModificar.value;
+          liModificado.appendChild(boton);
+          botonModificar.classList.add("oculto");
+          boton.insertAdjacentElement("beforebegin", botonModificar);
         }
       });
     });
   };
-
   li.addEventListener("click", liClickHandler);
 
   // Listener para borrar elemento da lista
@@ -120,7 +117,6 @@ botonBorrarTodo.addEventListener("click", () => {
 });
 
 // Listener para filtrar
-
 filtro.addEventListener("input", () => {
   let filtroMinuscula = filtro.value.toLowerCase();
   Array.from(lis).forEach((element) => {
