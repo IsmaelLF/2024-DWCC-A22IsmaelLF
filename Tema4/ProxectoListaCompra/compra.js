@@ -1,20 +1,81 @@
 "use strict";
-let input = document.getElementById("caixa");
-let contedor = document.getElementById("contedor");
-let botonEngadir = document.getElementById("engadir");
-let botonBorrarTodo = document.getElementById("borrar");
 let lis = document.getElementsByTagName("li");
-let ul = document.createElement("ul");
 let filtro = document.getElementById("filtro");
+let input = document.getElementById("caixa");
+let botonBorrarTodo = document.getElementById("borrar");
+let ul = document.createElement("ul");
 
-// Listener para engadir elemento a lista
+document.addEventListener("click", (e) => {
+  // console.log(e.target);
 
-botonEngadir.addEventListener("click", () => {
+  // Anadir elemento
+  if (e.target.matches("#engadir")) {
+    anadirElemento();
+  }
+  // Borrar todo
+  if (e.target.matches("#borrar")) {
+    borrarTodo();
+  }
+  if (e.target.closest("#botonModificar")) {
+    actualizarElementos();
+  }
+  if (e.target.matches(".botonConfirmar")) {
+    confirmarModificacion();
+  }
+});
+
+// Funcion para actualizar
+function actualizarElementos() {
+  let inputModificar = document.createElement("input");
+  inputModificar.setAttribute("type", "text");
+  inputModificar.setAttribute("id", "inputModificar");
+  Array.from(document.body.getElementsByTagName("li")).forEach((li) => {
+    console.log(li.firstChild.textContent);
+    inputModificar.value = li.firstChild.textContent;
+    li.textContent = "";
+    li.appendChild(inputModificar);
+    let botonConfirmar = document.createElement("button");
+    botonConfirmar.textContent = "✅";
+    botonConfirmar.className = "botonConfirmar";
+    li.appendChild(botonConfirmar);
+  });
+}
+function confirmarModificacion() {
+  let inputModificado = document.getElementById("inputModificar");
+  let liModificado = inputModificado.closest("li");
+  let botonX = document.getElementById("botonX");
+  console.log(botonX);
+
+  if (inputModificado.value !== "") {
+    liModificado.textContent = inputModificado.value;
+
+    liModificado.insertAdjacentElement("afterbegin", botonX);
+    botonModificar.classList.add("oculto");
+    // botonX.insertAdjacentElement("beforebegin", botonModificar);
+  }
+}
+
+// Listener para filtrar en input
+document.addEventListener("input", (e) => {
+  if (e.target.matches("#filtro")) {
+    filtrarElementos();
+  }
+});
+// Funcion para anadir elemento a lista
+
+function anadirElemento() {
+  let botonModificar = document.createElement("button");
+  let botonX = document.createElement("button");
   let li = document.createElement("li");
-  let boton = document.createElement("button");
-  boton.setAttribute("type", "button");
-  boton.className = "botonX";
-  boton.textContent = "❌";
+  botonModificar.className = "botonModificar";
+  botonModificar.setAttribute("type", "button");
+  botonModificar.setAttribute("id", "botonModificar");
+  botonModificar.textContent = "✏️";
+  botonX.setAttribute("type", "button");
+  botonX.setAttribute("id", "botonX");
+  botonX.className = "botonX";
+  botonX.textContent = "❌";
+
   if (input.value !== "") {
     li.textContent = input.value;
     let duplicado = false;
@@ -31,7 +92,8 @@ botonEngadir.addEventListener("click", () => {
 
     contedor.appendChild(ul);
     ul.appendChild(li);
-    li.appendChild(boton);
+    li.insertAdjacentElement("beforeend", botonModificar);
+    li.appendChild(botonX);
 
     let arrayProductos = [];
     for (const element of lis) {
@@ -46,66 +108,11 @@ botonEngadir.addEventListener("click", () => {
       botonBorrarTodo.classList.remove("oculto");
     }
   }
-  // Listener para actualizar
+}
 
-  const liClickHandler = () => {
-    let botonModificar = document.createElement("button");
-    botonModificar.setAttribute("type", "button");
-    botonModificar.textContent = "✏️";
-    botonModificar.className = "oculto";
-    botonModificar.classList.remove("oculto");
-    boton.insertAdjacentElement("beforebegin", botonModificar);
+// Funcion para borrar todo
 
-    botonModificar.addEventListener("click", () => {
-      li.removeEventListener("click", liClickHandler);
-      botonModificar.classList.add("oculto");
-      let inputModificar = document.createElement("input");
-      inputModificar.setAttribute("type", "text");
-
-      inputModificar.value = li.firstChild.textContent;
-      li.textContent = "";
-      li.appendChild(inputModificar);
-      let botonConfirmar = document.createElement("button");
-      botonConfirmar.textContent = "✅";
-      li.appendChild(botonConfirmar);
-      // TODO: Tense que actualizar no localStorage tamén.  Evitar que o listener do li se repita multiples veces e que o "novo" li teña listener. Non esta funcionando o removeEventListener, mirar eso.
-      botonConfirmar.addEventListener("click", () => {
-        let liModificado = inputModificar.closest("li");
-        if (inputModificar.value !== "") {
-          liModificado.textContent = inputModificar.value;
-          liModificado.appendChild(boton);
-          botonModificar.classList.add("oculto");
-          boton.insertAdjacentElement("beforebegin", botonModificar);
-        }
-      });
-    });
-  };
-  li.addEventListener("click", liClickHandler);
-
-  // Listener para borrar elemento da lista
-  boton.addEventListener("click", () => {
-    if (confirm("Queres eliminar este elemento?")) {
-      let productosArrayParseados = JSON.parse(
-        localStorage.getItem("productos")
-      );
-
-      productosArrayParseados = productosArrayParseados.filter(
-        (element) => element !== li.firstChild.textContent
-      );
-      localStorage.setItem("productos", productosArrayParseados);
-
-      li.remove();
-
-      if (lis.length < 1) {
-        botonBorrarTodo.classList.add("oculto");
-      }
-    }
-  });
-});
-
-// Listener para borrar todo
-
-botonBorrarTodo.addEventListener("click", () => {
+function borrarTodo() {
   if (confirm("Queres borrar todos os elementos?")) {
     Array.from(lis).forEach((element) => {
       element.remove();
@@ -114,10 +121,10 @@ botonBorrarTodo.addEventListener("click", () => {
     });
     botonBorrarTodo.classList.add("oculto");
   }
-});
+}
 
-// Listener para filtrar
-filtro.addEventListener("input", () => {
+// Funcion para filtrar
+function filtrarElementos() {
   let filtroMinuscula = filtro.value.toLowerCase();
   Array.from(lis).forEach((element) => {
     let li = element.firstChild.textContent;
@@ -127,4 +134,4 @@ filtro.addEventListener("input", () => {
       element.style.display = "none";
     }
   });
-});
+}

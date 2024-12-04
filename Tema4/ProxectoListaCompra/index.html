@@ -12,6 +12,7 @@
         padding: 10px;
         font-weight: bolder;
       }
+
       li {
         background-color: white;
         width: fit-content;
@@ -35,7 +36,9 @@
       }
       li:hover {
         scale: 120%;
+        background-color: aliceblue;
       }
+
       .updateBtn {
         background-color: lawngreen;
       }
@@ -43,16 +46,16 @@
         margin: auto;
         width: fit-content;
         text-align: center;
-        background-color: white;
-        border: 1px solid gray;
+        background-color: rgb(168, 167, 167);
+        border: 1px solid rgb(189, 189, 189);
       }
-      body,
-      #filtro {
-        background-color: lightgray;
+      body {
+        background-color: rgb(49, 49, 49);
       }
       #filtro,
       #filtro:focus {
         border: 0px;
+        background-color: rgb(255, 255, 255);
       }
       #caixa,
       #borrar {
@@ -60,16 +63,17 @@
         font-size: medium;
       }
       #engadir {
-        background-color: black;
+        background-color: rgb(29, 29, 29);
         color: white;
         padding: 10px;
         font-size: medium;
       }
       h2 {
         margin-top: 10vh;
-        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
         font-size: 70px;
-        color: deeppink;
+        font-weight: bolder;
+        color: rgb(231, 229, 230);
         width: 100%;
       }
       .oculto {
@@ -90,7 +94,7 @@
     </style>
   </head>
   <body>
-    <h2 behavior="scroll" direction="right" scrollamount="10">Lista compra</h2>
+    <h2>Lista compra</h2>
     <div id="contedor">
       <input
         type="text"
