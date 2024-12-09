@@ -11,6 +11,7 @@ document.addEventListener("input", (e) => {
   }
 });
 document.addEventListener("click", (e) => {
+  //Engadir Elemento
   if (e.target.matches("#engadir")) {
     let botonModificar = document.createElement("button");
     let botonX = document.createElement("button");
@@ -23,6 +24,9 @@ document.addEventListener("click", (e) => {
     botonX.textContent = "❌";
     botonModificar.classList.add("botonModificar");
     botonX.classList.add("botonX");
+
+    botonX.classList.add("oculto");
+    botonModificar.classList.add("oculto");
 
     if (input.value !== "") {
       li.textContent = input.value;
@@ -57,6 +61,18 @@ document.addEventListener("click", (e) => {
       }
     }
   }
+  // Engadir botons de modificar e borrar ao elemento
+  if (e.target.closest("li")) {
+    let li = e.target.closest("li");
+    for (const child of li.children) {
+      if (!e.target.matches("input")) {
+        if (child.tagName == "BUTTON") {
+          child.classList.remove("oculto");
+        }
+      }
+    }
+  }
+  // Borrar un so elemento
   if (e.target.matches("#botonX")) {
     let liCercano = e.target.closest("li");
 
@@ -70,15 +86,17 @@ document.addEventListener("click", (e) => {
       localStorage.setItem("productos", JSON.stringify(filtroLis));
     }
   }
+  // Borrar todos os elementos
   if (e.target.matches("#borrarTodo")) {
     borrarTodo();
   }
+  // Modificar un elemento
   if (e.target.matches("#botonModificar")) {
     let li = e.target.closest("li");
 
-    while (li.firstElementChild && li.firstElementChild.tagName !== "INPUT") {
-      li.removeChild(li.firstElementChild);
-    }
+    li.children[0].classList.add("oculto");
+    li.children[1].classList.add("oculto");
+
     let inputModificar = document.createElement("input");
     inputModificar.setAttribute("type", "text");
     inputModificar.setAttribute("id", "inputModificar");
@@ -89,28 +107,18 @@ document.addEventListener("click", (e) => {
     botonConfirmar.className = "botonConfirmar";
     li.appendChild(botonConfirmar);
   }
+  // Confirmar modificacion de elemento
   if (e.target.matches(".botonConfirmar")) {
     let li = e.target.closest("li");
-    let valorInput = li.firstElementChild.value;
+    let valorInput = li.children[2].value;
     if (valorInput != "") {
+      li.children[0].classList.toggle("oculto");
+      li.children[1].classList.toggle("oculto");
       li.firstChild.textContent = valorInput;
-      while (li.children.length > 0) {
-        li.removeChild(li.children[0]);
-      }
 
-      // Preguntar a Cristina se hai maneira de coller os botons xa existentes en vez de crealos de novo.
-      let botonModificar = document.createElement("button");
-      let botonX = document.createElement("button");
-      botonModificar.setAttribute("type", "button");
-      botonModificar.setAttribute("id", "botonModificar");
-      botonModificar.textContent = "✏️";
-      botonX.setAttribute("type", "button");
-      botonX.setAttribute("id", "botonX");
-      botonX.textContent = "❌";
-      botonModificar.classList.add("botonModificar");
-      botonX.classList.add("botonX");
-      li.appendChild(botonModificar);
-      li.appendChild(botonX);
+      li.children[3].remove();
+      li.children[2].remove();
+
       let arrayProductos = [];
       for (const element of lis) {
         arrayProductos.push(element.firstChild.textContent);
@@ -122,7 +130,6 @@ document.addEventListener("click", (e) => {
 });
 
 // Funcion para borrar todo
-
 function borrarTodo() {
   if (confirm("Queres borrar todos os elementos?")) {
     Array.from(lis).forEach((element) => {
