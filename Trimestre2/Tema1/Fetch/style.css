@@ -1,0 +1,80 @@
+/* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.oculto {
+  display: none;
+}
+/* Body styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #1e1e1e; /* Fondo oscuro para un estilo moderno */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  color: #ddd; /* Texto claro para contraste */
+}
+
+/* Section container */
+section {
+  background-color: #333; /* Fondo oscuro para el contenedor */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra más marcada */
+  width: 300px;
+  max-width: 90%;
+  max-height: 500px; /* Limitar la altura máxima para evitar el desbordamiento */
+  border: 2px solid #c930e7; /* Borde azul suave para resaltar */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* Asegura que el contenido y el botón estén separados */
+  overflow: hidden; /* Evitar que el contenido se desborde */
+  text-overflow: ellipsis; /* Agregar puntos suspensivos si el texto es demasiado largo */
+}
+
+/* Image styling */
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 4px solid #c930e7; /* Borde azul alrededor de la imagen */
+}
+
+/* Text styling */
+p {
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 2;
+  color: #f2f1f3; /* Texto gris más claro */
+  word-wrap: break-word; /* Permitir el salto de línea si el texto es largo */
+  max-height: 100px; /* Limitar la altura máxima de los párrafos */
+  overflow: hidden; /* Evitar el desbordamiento de los párrafos */
+  text-overflow: ellipsis; /* Poner puntos suspensivos si el texto es demasiado largo */
+}
+
+
+/* Button styling */
+button {
+  background-color: #c930e7; /* Fondo verde aguamarina para botones */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 900;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease; /* Transición suave para el hover */
+  margin-bottom: 20px;
+}
+
+button:hover {
+  background-color: #db1457; /* Oscurece al pasar el ratón */
+}
