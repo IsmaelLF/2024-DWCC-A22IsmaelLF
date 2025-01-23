@@ -54,7 +54,6 @@ async function getMunicipios() {
       inputFiltro.addEventListener("input", (e) => {
         let municipiosMinuscula = element.Denominación.toLowerCase();
         if (municipiosMinuscula.includes(e.target.value.toLowerCase())) {
-          console.log(municipiosMinuscula);
         }
       });
     });
