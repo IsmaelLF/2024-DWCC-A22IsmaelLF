@@ -1,6 +1,9 @@
 *{
     font-weight: bolder;
 }
+.oculto{
+  display: none;
+}
 body {
     display: flex;
     flex-direction: column; /* Para alinear los elementos de arriba hacia abajo */

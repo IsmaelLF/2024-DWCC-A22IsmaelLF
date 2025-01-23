@@ -51,6 +51,12 @@ async function getMunicipios() {
       trElementos.appendChild(tdDensidad);
       trElementos.appendChild(tdSuperficie);
       trElementos.appendChild(tdCodigoMunicipio);
+      inputFiltro.addEventListener("input", (e) => {
+        let municipiosMinuscula = element.Denominación.toLowerCase();
+        if (municipiosMinuscula.includes(e.target.value.toLowerCase())) {
+          console.log(municipiosMinuscula);
+        }
+      });
     });
   } catch (error) {
     console.log(error);
