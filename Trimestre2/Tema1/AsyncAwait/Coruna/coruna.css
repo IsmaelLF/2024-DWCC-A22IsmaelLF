@@ -1,0 +1,85 @@
+*{
+    font-weight: bolder;
+}
+body {
+    display: flex;
+    flex-direction: column; /* Para alinear los elementos de arriba hacia abajo */
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-color: #1a1a1a;
+  }
+  
+  #inputFiltro {
+    display: block;
+    color: white;
+    margin-top: 40px;
+    margin-bottom: 20px; /* Espacio entre el input y la tabla */
+    padding: 10px;
+    font-size: 16px;
+    max-width: 800px;
+    border: 2px solid #444;
+    border-radius: 5px;
+    background-color: #333;
+  }
+  
+  
+  table {
+    width: 100%;
+    max-width: 1000px;
+    border-collapse: collapse;
+    margin: 20px;
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  }
+  
+  thead {
+    background-color: #d5006d; /* Rosa fuerte */
+    color: #fff;
+  }
+  
+  th {
+    padding: 14px 20px;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  td{
+    text-align: center;
+    padding: 12px 20px;
+    font-size: 16px;
+    color: #f1f1f1;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #3c3c3c;
+  }
+  
+  tr:nth-child(odd) {
+    background-color: #333;
+  }
+  
+  tr:hover {
+    background-color: #424242;
+  }
+  
+  table th, table td {
+    border-bottom: 1px solid #444;
+  }
+  
+  table th:last-child, table td:last-child {
+    border-right: none;
+  }
+  
+  table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  table tr td:first-child {
+    font-weight: bold;
+    color: #d5006d; /* Rosa para las etiquetas */
+  }
+  
