@@ -25,7 +25,9 @@ body {
     border-radius: 5px;
     background-color: #333;
   }
-  
+  p{
+    color: white;
+  }
   
   table {
     width: 100%;

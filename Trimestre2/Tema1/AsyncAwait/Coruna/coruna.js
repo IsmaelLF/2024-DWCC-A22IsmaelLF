@@ -51,12 +51,33 @@ async function getMunicipios() {
       trElementos.appendChild(tdDensidad);
       trElementos.appendChild(tdSuperficie);
       trElementos.appendChild(tdCodigoMunicipio);
+
+      trElementos.addEventListener("click", () => {
+        if (trElementos.lastElementChild.nodeName !== "P") {
+          for (const propiedad in element) {
+            let pInfoRestante = document.createElement("p");
+            pInfoRestante.textContent = `${propiedad} : ${element[propiedad]} `;
+            trElementos.appendChild(pInfoRestante);
+          }
+        }
+      });
+      // // FILTRO
       inputFiltro.addEventListener("input", (e) => {
         let municipiosMinuscula = element.Denominación.toLowerCase();
         if (municipiosMinuscula.includes(e.target.value.toLowerCase())) {
+          trElementos.style.display = "table-row";
+        } else {
+          trElementos.style.display = "none";
         }
       });
+      // ENSEÑAR TODA A INFO
     });
+    // tabla.addEventListener("click", (e) => {
+    //   jsonData.forEach((element) => {
+    //     console.log(element);
+    //   });
+    //   console.log(e.target.closest("tr"));
+    // });
   } catch (error) {
     console.log(error);
   }
