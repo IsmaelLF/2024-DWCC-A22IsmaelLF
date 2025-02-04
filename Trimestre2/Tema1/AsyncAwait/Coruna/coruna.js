@@ -61,7 +61,7 @@ async function getMunicipios() {
           }
         }
       });
-      // // FILTRO
+      // FILTRO
       inputFiltro.addEventListener("input", (e) => {
         let municipiosMinuscula = element.Denominación.toLowerCase();
         if (municipiosMinuscula.includes(e.target.value.toLowerCase())) {

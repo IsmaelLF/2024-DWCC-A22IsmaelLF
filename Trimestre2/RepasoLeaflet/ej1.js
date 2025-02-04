@@ -7,25 +7,24 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 map.locate({ setView: true, zoom: 17 });
-
-let popup = L.popup();
-let marker = L.marker;
+let tooltip = L.tooltip();
+let marker = null;
 function onMapClick(e) {
-  popup
-    .setLatLng(e.latlng)
-    .setContent(
-      "Agora mesmo atopaste en  <br>" +
-        "<b>lon:</b> " +
-        e.latlng.lng.toFixed(6) +
-        "<br>" +
-        "<b>lat:</b> " +
-        e.latlng.lat.toFixed(6)
-    );
-  // ARREGLAR MARCADOR
-  marker(e.latlng)
-    .addTo(map)
-    .on("mouseout", (e) => e.target.remove())
-    .bindPopup(popup)
-    .openPopup();
+  tooltip.setContent(
+    "Agora mesmo atopaste en  <br>" +
+      "<b>lon:</b> " +
+      e.latlng.lng.toFixed(6) +
+      "<br>" +
+      "<b>lat:</b> " +
+      e.latlng.lat.toFixed(6)
+  );
+  if (marker === null) {
+    marker = L.marker(e.latlng, { draggable: true })
+      .addTo(map)
+      .bindTooltip(tooltip)
+      .openTooltip();
+  } else {
+    marker.setLatLng(e.latlng).bindTooltip(tooltip).openTooltip();
+  }
 }
 map.on("click", onMapClick);
