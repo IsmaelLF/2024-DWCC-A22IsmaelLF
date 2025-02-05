@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
+      li {
+        color: white;
+        list-style: none;
+        margin: 10px;
+      }
       .oculto {
         display: none;
       }
@@ -26,11 +31,12 @@
       }
 
       #listado {
+        color: white;
         text-align: center;
         background-color: rgb(139, 139, 139);
         padding-top: 2.5vh;
         width: 30vw;
-        height: 50%;
+        height: 100%;
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
         overflow-y: auto;
@@ -45,7 +51,7 @@
   </head>
   <body>
     <div id="map"></div>
-    <div id="listado"><h4>Listado Marcadores</h4></div>
+    <div id="listado"><h4>MARCADORES</h4></div>
   </body>
   <script
     src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"

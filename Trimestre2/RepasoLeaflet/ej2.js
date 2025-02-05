@@ -1,11 +1,8 @@
 "use strict";
 const listado = document.getElementById("listado");
 let formInput = document.createElement("input");
-let botonSubmit = document.createElement("button");
 formInput.classList.add("oculto");
-botonSubmit.classList.add("oculto");
 listado.appendChild(formInput);
-listado.appendChild(botonSubmit);
 let marker = null;
 let arrayMarkers = [];
 let tooltip = L.tooltip();
@@ -20,15 +17,12 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
 function mapClick(e) {
   marker = L.marker(e.latlng, { draggable: true }).addTo(map);
-  botonSubmit.textContent = "Engadir";
   formInput.classList.remove("oculto");
-  botonSubmit.classList.remove("oculto");
   // Poñer o foco unha vez creado
   formInput.focus();
 }
 formInput.addEventListener("keydown", (e) => {
   if (e.code === "Enter") {
-    marker.bindTooltip(`${formInput.value}`).openTooltip();
     arrayMarkers.push(marker["_latlng"]);
     let li = document.createElement("li");
     li.textContent = formInput.value;
@@ -39,18 +33,35 @@ formInput.addEventListener("keydown", (e) => {
     );
     formInput.value = "";
     formInput.classList.add("oculto");
-    botonSubmit.classList.add("oculto");
   }
 });
 listado.addEventListener("click", (e) => {
-  console.log(localStorage);
+  if (e.target.matches("li")) {
+    let liSeleccionado = e.target.closest("li").textContent;
+    map.panTo(JSON.parse(localStorage[liSeleccionado]));
+    console.log(L.popup());
 
-  // if (localStorage.includes(e.target.closest("li").textContent)) {
-  //   console.log("aaaa");
-  // }
+    L.popup()
+      .setLatLng(JSON.parse(localStorage[liSeleccionado]))
+      .setContent(liSeleccionado)
+      .addTo(map);
+  }
 });
 
-listado.addEventListener("mouseover", () => {
-  listado.style.cursor = "pointer";
+listado.addEventListener("dblclick", (e) => {
+  if (e.target.matches("li")) {
+    for (const marcador of arrayMarkers) {
+      console.log(marcador);
+      map.panTo(marcador);
+    }
+  }
+});
+
+listado.addEventListener("mouseover", (e) => {
+  if (e.target.matches("li")) {
+    listado.style.cursor = "pointer";
+  } else {
+    listado.style.cursor = "default";
+  }
 });
 map.on("click", mapClick);
