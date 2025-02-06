@@ -39,20 +39,21 @@ listado.addEventListener("click", (e) => {
   if (e.target.matches("li")) {
     let liSeleccionado = e.target.closest("li").textContent;
     map.panTo(JSON.parse(localStorage[liSeleccionado]));
-    console.log(L.popup());
-
-    L.popup()
-      .setLatLng(JSON.parse(localStorage[liSeleccionado]))
-      .setContent(liSeleccionado)
-      .addTo(map);
+    let popupEngadido = null;
+    if (popupEngadido === null) {
+      popupEngadido = L.popup()
+        .setLatLng(JSON.parse(localStorage[liSeleccionado]))
+        .setContent(liSeleccionado)
+        .addTo(map);
+    }
   }
 });
 
 listado.addEventListener("dblclick", (e) => {
   if (e.target.matches("li")) {
     for (const marcador of arrayMarkers) {
-      console.log(marcador);
       map.panTo(marcador);
+      console.log(marcador);
     }
   }
 });
