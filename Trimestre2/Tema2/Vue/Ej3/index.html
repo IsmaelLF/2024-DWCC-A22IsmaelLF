@@ -9,21 +9,31 @@
   <body>
     <div id="app">
       <form>
-        <input type="text" />
+        <input v-model="texto" />
+        <p>{{texto}}</p>
+
+        <textarea v-model="message"></textarea>
+        <p style="white-space: pre-line">{{ message }}</p>
         <br />
-        <textarea />
+        <input type="checkbox" id="checkbox" v-model="checked" />
+        <label for="checkbox">{{ checked }}</label>
+
         <br />
-        <input type="checkbox" />
-        <br />
-        <input type="checkbox" />
-        <br />
-        <input type="radio" />
-        <br />
-        <select>
-          <option value="def" selected>Default</option>
+        <input type="radio" id="one" value="One" v-model="picked" />
+        <label for="one">One</label>
+        <input type="radio" id="two" value="Two" v-model="picked" />
+        <label for="two">Two</label>
+        <div>Picked: {{ picked }}</div>
+        <select v-model="selected">
+          <option disabled value="">Default</option>
           <option value="A">A</option>
           <option value="B">B</option>
         </select>
+        <div>Selected: {{ selected }}</div>
+
+        <br />
+        <br />
+        <button @click.prevent="resetForm">Reset</button>
       </form>
     </div>
   </body>
