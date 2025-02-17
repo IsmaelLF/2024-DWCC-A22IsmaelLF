@@ -17,7 +17,7 @@ createApp({
   },
   methods: {
     calcularPar() {
-      this.numeroPar = this.total % 2 === 0 ? "par" : "impar";
+      this.numeroPar = this.suma % 2 === 0 ? "par" : "impar";
     },
   },
   watch: {
