@@ -11,7 +11,31 @@ import { createApp } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
 
 createApp({
   data() {
-    return {};
+    return {
+      isActiveFirst: true,
+      isActiveSecond: false,
+      isActiveThird: true,
+      isActiveFourth: false,
+    };
   },
-  methods: {},
+  methods: {
+    toggleFirst() {
+      this.isActiveFirst = !this.isActiveFirst;
+    },
+    toggleSecond() {
+      this.isActiveSecond = !this.isActiveSecond;
+    },
+    toggleThird() {
+      this.isActiveThird = !this.isActiveThird;
+      if (this.isActiveThird) {
+        this.isActiveFourth = false;
+      }
+    },
+    toggleFourth() {
+      this.isActiveFourth = !this.isActiveFourth;
+      if (this.isActiveFourth) {
+        this.isActiveThird = false;
+      }
+    },
+  },
 }).mount("#app");

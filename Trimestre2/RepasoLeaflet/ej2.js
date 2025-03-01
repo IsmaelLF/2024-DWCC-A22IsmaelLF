@@ -39,6 +39,7 @@ listado.addEventListener("click", (e) => {
   if (e.target.matches("li")) {
     let liSeleccionado = e.target.closest("li").textContent;
     map.panTo(JSON.parse(localStorage[liSeleccionado]));
+    // Esto está mal
     let popupEngadido = null;
     if (popupEngadido === null) {
       popupEngadido = L.popup()
@@ -49,6 +50,7 @@ listado.addEventListener("click", (e) => {
   }
 });
 
+// Esto está sin acabar 
 listado.addEventListener("dblclick", (e) => {
   if (e.target.matches("li")) {
     for (const marcador of arrayMarkers) {
