@@ -1,3 +1,4 @@
+@ -0,0 +1,58 @@
 // a. Tanto a vida do monstro como a da persoa que xoga terá valores entre 0 -
 // 100. É dicir, o valor de vida non pode ser un número negativo nin superar o
 // valor 100. Debe comprobarse en todo momento que está no rango permitido.
