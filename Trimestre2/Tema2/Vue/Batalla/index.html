@@ -1,51 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Batalla</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="app.js" defer></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Batalla</title>
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
-  <script src="app.js" defer></script>
-</head>
-
-<body>
-  <header>
-    <h1>Batalla</h1>
-  </header>
-  <div id="game">
-    <section id="monster" class="container">
-      <h2>Monstro</h2>
-      <div class="healthbar">
-        <div class="healthbar__value"></div>
-      </div>
-    </section>
-    <section id="player" class="container">
-      <h2>Vostede</h2>
-      <div class="healthbar">
-        <div class="healthbar__value"></div>
-      </div>
-    </section>
-    <section class="container">
-      <h2>Fin partida!</h2>
-      <h3>Perdiches!</h3>
-      <h3>Ganaches</h3>
-      <h3>Empate</h3>
-      <button>Novo xogo</button>
-    </section>
-    <section id="controls">
-      <button>ATAQUE</button>
-      <button>ATAQUE ESPECIAL</button>
-      <button>CURACIÓN</button>
-      <button>RENDERSE</button>
-    </section>
-    <section id="log" class="container">
-      <h2>Rexistro da batalla</h2>
-      <ul></ul>
-    </section>
-  </div>
-</body>
-
+  <body>
+    <header>
+      <h1>Batalla</h1>
+    </header>
+    <div id="game">
+      <section id="monster" class="container">
+        <h2>Monstro</h2>
+        <div class="healthbar">
+          <div
+            class="healthbar__value"
+            :style="{width: vidaMonstro + '%'}"
+          ></div>
+        </div>
+      </section>
+      <section id="player" class="container">
+        <h2>Xogador</h2>
+        <div class="healthbar">
+          <div
+            class="healthbar__value"
+            :style="{width: vidaXogador + '%'}"
+          ></div>
+        </div>
+      </section>
+      <section class="container">
+        <h2>Fin partida!</h2>
+        <h3>Perdiches!</h3>
+        <h3>Ganaches</h3>
+        <h3>Empate</h3>
+        <button :style="{display: botonNovoXogoVisible}">Novo xogo</button>
+      </section>
+      <section id="controls">
+        <button @click="ataqueNormal">ATAQUE</button>
+        <button>ATAQUE ESPECIAL</button>
+        <button>CURACIÓN</button>
+        <button>RENDERSE</button>
+      </section>
+      <section id="log" class="container">
+        <h2>Rexistro da batalla</h2>
+        <ul></ul>
+      </section>
+    </div>
+  </body>
 </html>
