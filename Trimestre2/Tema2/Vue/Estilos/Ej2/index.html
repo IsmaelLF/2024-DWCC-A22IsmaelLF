@@ -6,7 +6,6 @@
     <title>Document</title>
     <script type="module" src="script.js" defer></script>
     <style>
-
       .active {
         border: 2px solid blue;
         background-color: violet;
@@ -18,20 +17,18 @@
         background-color: deeppink;
         font-weight: bolder;
         color: blue;
-
+      }
       .celda1 {
         display: inline-block;
         border: 3px solid blue;
         width: 15%;
         height: 10%;
         margin: 10%;
-
       }
     </style>
   </head>
   <body>
     <div id="app">
-      <<<<<<< Updated upstream
       <div
         class="cell first"
         :class="{ 'active': isActiveFirst }"
@@ -61,14 +58,11 @@
       >
         4
       </div>
-      =======
+
       <table style="width: 50%; height: 400px; text-align: center">
         <td :class="{celda1: isCellOneActive}">CELA 1</td>
         <td style="border: 1px solid black">CELA 2</td>
       </table>
-      >>>>>>> Stashed changes
     </div>
   </body>
 </html>
-
-d
