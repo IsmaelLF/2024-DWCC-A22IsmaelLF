@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="module" src="script.js" defer></script>
+    <style>
+
+      .active {
+        border: 2px solid blue;
+        background-color: violet;
+        font-weight: bolder;
+        color: blueviolet;
+      }
+      .secondActive {
+        border: 2px solid crimson;
+        background-color: deeppink;
+        font-weight: bolder;
+        color: blue;
+
+      .celda1 {
+        display: inline-block;
+        border: 3px solid blue;
+        width: 15%;
+        height: 10%;
+        margin: 10%;
+
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <<<<<<< Updated upstream
+      <div
+        class="cell first"
+        :class="{ 'active': isActiveFirst }"
+        @click="toggleFirst"
+      >
+        1
+      </div>
+      <div
+        class="cell second"
+        :class="{ 'active': isActiveSecond }"
+        @click="toggleSecond"
+      >
+        2
+      </div>
+      <hr />
+      <div
+        class="cell third"
+        :class="{ 'secondActive': isActiveThird }"
+        @click="toggleThird"
+      >
+        3
+      </div>
+      <div
+        class="cell fourth"
+        :class="{ 'secondActive': isActiveFourth }"
+        @click="toggleFourth"
+      >
+        4
+      </div>
+      =======
+      <table style="width: 50%; height: 400px; text-align: center">
+        <td :class="{celda1: isCellOneActive}">CELA 1</td>
+        <td style="border: 1px solid black">CELA 2</td>
+      </table>
+      >>>>>>> Stashed changes
+    </div>
+  </body>
+</html>
+
+d
