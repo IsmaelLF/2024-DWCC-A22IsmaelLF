@@ -12,7 +12,6 @@ import { createApp } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
 createApp({
   data() {
     return {
-<<<<<<< Updated upstream
       isActiveFirst: true,
       isActiveSecond: false,
       isActiveThird: true,
@@ -38,10 +37,7 @@ createApp({
         this.isActiveThird = false;
       }
     },
-=======
-      isCellOneActive: true,
-      isCellTwoActive: false,
-    };
->>>>>>> Stashed changes
+    isCellOneActive: true,
+    isCellTwoActive: false,
   },
 }).mount("#app");

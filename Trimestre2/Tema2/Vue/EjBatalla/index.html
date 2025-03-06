@@ -35,23 +35,25 @@
         </div>
       </section>
       <section class="container">
-        <h2>Fin partida!</h2>
-        <h3>Perdiches!</h3>
-        <h3>Ganaches</h3>
-        <h3>Empate</h3>
-        <button :style="{display: botonNovoXogoVisible}">Novo xogo</button>
+        <h2 :style="{display: botonNovoXogoVisible}">Fin partida!</h2>
+        <h3 :style="{display: partidaPerdida}">Perdiches!</h3>
+        <h3 :style="{display: partidaGanada}">Ganaches</h3>
+        <h3 :style="{display: partidaEmpatada}">Empate</h3>
+        <button :style="{display: botonNovoXogoVisible}" @click="reset">
+          Novo xogo
+        </button>
       </section>
-      <section id="controls">
+      <section id="controls" :style="{display: botonsOcultos}">
         <button @click="ataqueNormal">ATAQUE</button>
         <button @click="ataqueEspecial" :disabled="!ataqueEspecialDisponible">
           ATAQUE ESPECIAL
         </button>
         <button @click="curacion">CURACIÓN</button>
-        <button>RENDERSE</button>
+        <button @click="rendirse">RENDERSE</button>
       </section>
       <section id="log" class="container">
         <h2>Rexistro da batalla</h2>
-        <ul></ul>
+        <ul v-for="action in history" v-html="action.html"></ul>
       </section>
     </div>
   </body>
