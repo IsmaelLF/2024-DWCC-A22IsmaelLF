@@ -1,6 +1,6 @@
 <script>
-import MostrarNomeAno from "./components/MostrarNomeAno.vue";
 import FormularioDatos from "./components/FormularioDatos.vue";
+import MostrarNomeAno from "./components/MostrarNomeAno.vue";
 
 export default {
   components: {

@@ -28,6 +28,7 @@ export default {
       <br /><br />
       <label for="ano">Ano Nacemento </label>
       <input type="number" name="ano" v-model="ano" />
+      <br /><br />
       <button @click.prevent="editarDatos">✏️</button>
     </form>
   </div>
