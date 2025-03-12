@@ -1,6 +1,6 @@
 <script></script>
 <template>
-  <div class="modal-mask" @click.self="this.$emit('close')">
+  <div class="modal-mask">
     <div class="modal-container">
       <header>
         <slot name="header" :message="'default header'"> </slot>
@@ -9,8 +9,9 @@
         <slot :message="'default body'"></slot>
       </main>
       <footer>
-        <slot :message="'default footer'"></slot>
+        <slot name="footer" :message="'default footer'"></slot>
       </footer>
+      <slot name="button"> </slot>
     </div>
   </div>
 </template>
